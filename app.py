@@ -1,4 +1,9 @@
 from flask import Flask, render_template,redirect,url_for,request
+app = Flask(__name__)
+if app.config["ENV"] == "production":
+    app.config.from_object("config.ProductionConfig")
+else:
+    app.config.from_object("config.DevelopmentConfig")
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField,PasswordField,BooleanField
@@ -9,10 +14,7 @@ from sqlalchemy import update
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import LoginManager,UserMixin,login_user,login_required,logout_user,current_user
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'jiskibiwimotiuskabhibaranamhai'
-app.config['SQLALCHEMY_DATABASE_URI'] =  'postgresql://{user}:{pw}@{url}/{db}'.format(user='postgres',pw='1234',url='localhost',db='askprocoders')
+
 Bootstrap(app)
 db = SQLAlchemy(app)
 login_manager = LoginManager()
@@ -147,5 +149,5 @@ def not_found(e):
 if __name__ == '__main__':
 	db.create_all()
 	db.session.commit()
-	app.run(debug=False)
+	app.run()
 
