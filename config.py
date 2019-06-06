@@ -1,3 +1,5 @@
+PORT = None
+
 class Config(object):
     DEBUG = False
     TESTING = False
@@ -14,6 +16,7 @@ class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI ='postgresql://postgres:1234@localhost:5432/askprocoders'
     SESSION_COOKIE_SECURE = False
+    PORT =3000
 
 class TestingConfig(Config):
     TESTING = True

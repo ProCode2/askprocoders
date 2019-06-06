@@ -13,7 +13,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import update
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import LoginManager,UserMixin,login_user,login_required,logout_user,current_user
-
+from config import PORT
 
 Bootstrap(app)
 db = SQLAlchemy(app)
@@ -147,7 +147,10 @@ def not_found(e):
 
 
 if __name__ == '__main__':
-	db.create_all()
-	db.session.commit()
-	app.run()
+	port = PORT
+	print(port)
+	if port:
+		app.run(port=port)
+	else:
+		app.run()
 
