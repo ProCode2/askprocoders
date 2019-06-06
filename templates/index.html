@@ -1,0 +1,74 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}
+AskProCoders
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='starter-template.css')}}">
+<link rel="icon" type="image/gif" href="{{url_for('static', filename='image/procoders.jpg')}}">
+{% endblock %}
+
+{% block content %}
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://twitter.com/@askcoders">AskProCoders!</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<div align:center>
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>let's Share  some Knowledge</h1>
+        <p class="lead">Contribution to a good cause was never a bad idea and never will be! </p>
+        <h1> ......................  </h1>
+        <div>
+        <h1 style = "text-align: left;"> => Let's Get You Started!</h1>
+        <ol>
+            <li style = "text-align: left;"><a href ="/signup">Sign up</a> here to be able to See questins That you may want to answer!</li>
+            <li style = "text-align: left;">In <a href = '/dashboard'>Dashboard</a> you will see a list of questions with a @askprocoders tag(please ignore that for now)</li>
+            <li style = "text-align: left;"> Look for Questions that are under your scope and Start answering!</li>
+            <li style = "text-align: left;"> you can clso search for topic that interests you in the search tag in dashboard</li>
+            <li style = "text-align: left;"> You will get the stats of your answers monthly in your Email .</li>
+        </ol>
+      </div>
+      <div>
+        <h1 style = "text-align: left;"> =>About this Site!</h1>
+        <p>This is the official site of <a hre = 'https://www.twitter.com/Procode1'>Askprocoders</a> . You can sign up here if you want to help me answer code newbies with their querries . You can also fund this site by going to "support me" in you dashboard . If you want to contribute you skills to this project feel free to chhose any one of the above ways in the contact me section . </p>
+      </div>
+      <div>
+        <h1 style = "text-align: left;"> => Contact Me at!</h1>
+        <li style = "text-align: left;"> Text me at - <a href ="https://www.twitter.com/Procode1">Twitter</a></li>
+            <li style = "text-align: left;">Email - bpro249@gmail.com</li>
+            <h1 style = "text-align: left;">Would love to have suggestions! </h1>
+      </div>
+      <div>
+        <p>If you think this site can help others!</p>
+        <p>Help this site Grow Share with your friends</p>
+      </div>
+      </div>
+</div>
+    </div><!-- /.container -->
+     <footer>
+      
+     <p class="mt-5 mb-3 text-muted" style = "text-align: center;">&copy;AskProCoders  2019</p>
+      
+    </footer>
+{% endblock %}
+
