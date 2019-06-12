@@ -5,9 +5,9 @@ class Config(object):
     DEBUG = False
     TESTING = False
     CSRF_ENABLED = True
-    SECRET_KEY = 'jiskibiwimotiuskabhibaranamhai'
+    SECRET_KEY = 'the_secret_key'
     SQLALCHEMY_TRACK_MODIFICATIONS =False
-    SQLALCHEMY_DATABASE_URI  = os.getenv('DATABASE_URL' ,  'postgresql://postgres:1234@localhost/askprocoders')
+    SQLALCHEMY_DATABASE_URI  = os.getenv('DATABASE_URL' ,  'postgresql://username: password@localhost/yourdata')
 
 class ProductionConfig(Config):
     DEBUG = False
