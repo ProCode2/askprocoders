@@ -1,9 +1,6 @@
+import os
 from flask import Flask, render_template,redirect,url_for,request
-app = Flask(__name__)
-if app.config["ENV"] == "production":
-    app.config.from_object("config.ProductionConfig")
-else:
-    app.config.from_object("config.DevelopmentConfig")
+app.config.from_object("config.ProductionConfig")
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField,PasswordField,BooleanField
@@ -13,13 +10,13 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import update
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import LoginManager,UserMixin,login_user,login_required,logout_user,current_user
-from config import PORT
 
 Bootstrap(app)
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 
@@ -145,12 +142,10 @@ def answ():
 def not_found(e):
 	return render_template('404.html')
 
-
 if __name__ == '__main__':
-	port = PORT
-	print(port)
-	if port:
-		app.run(port=port)
-	else:
-		app.run()
+    db.create_all()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(
+        port=port,
+    )
 
